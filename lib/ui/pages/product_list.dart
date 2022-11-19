@@ -27,13 +27,15 @@ class _ProductListState extends State<ProductList> {
             // TODO
             // aquí debemos rodear el widget Expanded en un Obx para
             // observar los cambios en la lista de entries del shoppingController
-            Expanded(
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: shoppingController.entries.length,
-                  itemBuilder: (context, index) {
-                    return _row(shoppingController.entries[index], index);
-                  }),
+            Obx(
+              () => Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: shoppingController.entries.length,
+                    itemBuilder: (context, index) {
+                      return _row(shoppingController.entries[index], index);
+                    }),
+              ),
             )
           ],
         ),
@@ -72,21 +74,20 @@ class _ProductListState extends State<ProductList> {
         Column(
           children: [
             IconButton(
-                onPressed: () {
-                  // TODO
-                  // aquí debemos llamar al método del controlador que
-                  // incrementa el número de unidades del producto
-                  // pasandole el product.id
-                },
+                onPressed: () => shoppingController.agregarProducto(product.id),
                 icon: const Icon(Icons.arrow_upward)),
+            // TODO
+            // aquí debemos llamar al método del controlador que
+            // incrementa el número de unidades del producto
+            // pasandole el product.id
+
             IconButton(
-                onPressed: () {
-                  // TODO
-                  // aquí debemos llamar al método del controlador que
-                  // disminuye el número de unidades del producto
-                  // pasandole el product.id
-                },
-                icon: const Icon(Icons.arrow_downward))
+                onPressed: () => shoppingController.quitarProducto(product.id),
+                icon: const Icon(Icons.arrow_downward)),
+            // TODO
+            // aquí debemos llamar al método del controlador que
+            // disminuye el número de unidades del producto
+            // pasandole el product.id
           ],
         ),
         Column(

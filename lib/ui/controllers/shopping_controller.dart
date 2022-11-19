@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
@@ -20,6 +21,9 @@ class ShoppingController extends GetxController {
   void calcularTotal() {
     int newTotal = 0;
     // TODO
+    for (Product p in entries) {
+      newTotal += p.price * p.quantity;
+    }
     // calcular el valor total de los elementos en el carro de compras
     total.value = newTotal;
   }
@@ -27,6 +31,10 @@ class ShoppingController extends GetxController {
   agregarProducto(id) {
     logInfo('agregarProducto $id');
     // TODO
+    Product p = entries.firstWhere((element) => id == element.id);
+    int i = entries.indexOf(p);
+    p.quantity += 1;
+    entries[i] = p;
     // Encontrar el elemento usando el id, revisar el método firstWhere de la lista
     // después obtener el index de ese elemento, revisar el método indexOf de la lista
     // después hacer el incremento en la cantidad
@@ -37,6 +45,12 @@ class ShoppingController extends GetxController {
   quitarProducto(id) {
     logInfo('quitarProducto $id');
     // TODO
+    Product p = entries.firstWhere((element) => id == element.id);
+    int i = entries.indexOf(p);
+    if (p.quantity > 0) {
+      p.quantity -= 1;
+      entries[i] = p;
+    }
     // similar a agregarProducto
     // validar cuando la cantidad es igual a cero
     calcularTotal();
