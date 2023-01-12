@@ -1,5 +1,5 @@
-import 'package:f_shopping_app/domain/product.dart';
-import 'package:f_shopping_app/ui/controllers/shopping_controller.dart';
+import 'package:f_shopping_app_r2_template/domain/product.dart';
+import 'package:f_shopping_app_r2_template/ui/controllers/shopping_controller.dart';
 import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 

@@ -1,4 +1,4 @@
-import 'package:f_shopping_app/ui/controllers/shopping_controller.dart';
+import 'package:f_shopping_app_r2_template/ui/controllers/shopping_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 
